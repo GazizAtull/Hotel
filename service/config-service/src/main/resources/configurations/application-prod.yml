@@ -1,0 +1,9 @@
+spring:
+  profiles: prod
+
+server:
+  port: 80
+
+eureka:
+  client:
+    enabled: false
