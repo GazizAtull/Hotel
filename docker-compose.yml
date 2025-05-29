@@ -12,3 +12,20 @@ services:
       - SPRING_PROFILES_ACTIVE=native
     volumes:
       - ./configurations:/configurations
+    # ——— Discovery Service ———
+  discovery-service:
+      build:
+        context: ./discovery-service
+        dockerfile: Dockerfile
+      image: myorg/discovery-service:latest
+      ports:
+        - "8761:8761"
+      environment:
+
+        - SPRING_PROFILES_ACTIVE=dev
+      networks:
+        - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
